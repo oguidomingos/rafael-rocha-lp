@@ -1,581 +1,228 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Rafael Rocha — Clínica Santa Isabel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #1e5a5a;
-      --secondary: #e8976b;
-      --accent: #f5f5f5;
-      --dark: #1a1a1a;
-      --light: #ffffff;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background: var(--light);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      background: var(--light);
-      border-bottom: 1px solid #e0e0e0;
-      z-index: 100;
-      padding: 1.2rem 2rem;
-    }
-
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    nav a {
-      margin-left: 2rem;
-      text-decoration: none;
-      color: var(--dark);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--secondary);
-    }
-
-    .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, #2a7a7a 100%);
-      color: var(--light);
-      padding: 6rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.95;
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background: var(--secondary);
-      color: var(--dark);
-      padding: 1rem 2.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-      animation: fadeInUp 0.8s ease-out 0.4s both;
-    }
-
-    .cta-button:hover {
-      background: #d98456;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(232, 151, 107, 0.3);
-    }
-
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 1s ease-out 0.3s both;
-    }
-
-    .hero-visual svg {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--secondary);
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      margin-top: 0.5rem;
-    }
-
-    .services {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 2rem;
-    }
-
-    .services h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      text-align: center;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .services-subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 3rem;
-      font-size: 1.1rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      background: var(--accent);
-      padding: 2rem;
-      border-radius: 8px;
-      transition: all 0.3s;
-      border-left: 4px solid var(--secondary);
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-    }
-
-    .service-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-      color: var(--primary);
-    }
-
-    .service-card p {
-      color: #666;
-      font-size: 0.95rem;
-      line-height: 1.8;
-    }
-
-    .trust {
-      background: var(--accent);
-      padding: 4rem 2rem;
-      margin: 4rem 0;
-    }
-
-    .trust-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .trust h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 2rem;
-      color: var(--primary);
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .trust-item {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .trust-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-
-    .trust-item h3 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      color: var(--dark);
-    }
-
-    .trust-item p {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    .about {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-    }
-
-    .about p {
-      color: #666;
-      margin-bottom: 1rem;
-      line-height: 1.8;
-    }
-
-    .about-image {
-      background: linear-gradient(135deg, var(--primary) 0%, #2a7a7a 100%);
-      height: 300px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--light);
-      font-size: 3rem;
-    }
-
-    footer {
-      background: var(--dark);
-      color: var(--light);
-      padding: 3rem 2rem;
-      margin-top: 4rem;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .footer-section h3 {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .footer-section a {
-      display: block;
-      color: #ccc;
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .footer-section a:hover {
-      color: var(--secondary);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid #333;
-      font-size: 0.85rem;
-      color: #999;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .stats {
-        grid-template-columns: 1fr;
-      }
-      nav {
-        display: none;
-      }
-      .about {
-        grid-template-columns: 1fr;
-      }
-      .header-content {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Rafael Rocha | Medicina da Dor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a5c7a 0%, #2a7fa0 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .hero .subtitle {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 15px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #d4a574;
+            color: #1a5c7a;
+            padding: 12px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        .cta-button:hover { background: #e6b88a; }
+        
+        /* Content sections */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #1a5c7a;
+        }
+        
+        /* Services Grid */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: #f9f7f4;
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26,92,122,0.15);
+        }
+        .service-card h3 {
+            color: #2a7fa0;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* Credentials */
+        .credentials {
+            background: #f0f8fb;
+            padding: 60px 20px;
+        }
+        .credential-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        .credential-item {
+            padding-left: 25px;
+            position: relative;
+        }
+        .credential-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a574;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .credential-item p { color: #666; font-size: 0.95rem; }
+        
+        /* Footer */
+        footer {
+            background: #1a5c7a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section h2 { font-size: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <div class="logo">Santa Isabel</div>
-      <nav>
-        <a href="#services">Serviços</a>
-        <a href="#about">Sobre</a>
-        <a href="#contact">Contato</a>
-      </nav>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Dr. Rafael Rocha</h1>
+        <p>Especialista em Medicina da Dor</p>
+        <p class="subtitle">Procedimentos guiados por ultrassom com expertise comprovada</p>
+        <a href="#contato" class="cta-button">Agende sua Consulta</a>
     </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <div>
-        <h1>Medicina da Dor com Excelência</h1>
-        <p>46 anos de confiança. Procedimentos guiados por ultrassom. Atendimento em convênio e particular.</p>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-number">46+</div>
-            <div class="stat-label">Anos de história</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Procedimentos</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">4</div>
-            <div class="stat-label">Unidades</div>
-          </div>
+    
+    <!-- Sobre -->
+    <div class="section container">
+        <h2>Experiência & Qualificação</h2>
+        <p style="font-size: 1.05rem; color: #666; margin-bottom: 30px;">
+            Ortopedista especializado em Medicina da Dor com mais de 15 anos de experiência e 
+            <strong>+500 procedimentos</strong> realizados em centro cirúrgico. 
+            Residência em Dor pelo HC Clínicas da Universidade Federal.
+        </p>
+    </div>
+    
+    <!-- Serviços -->
+    <div class="section container" style="background: white;">
+        <h2>Procedimentos Especializados</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Ácido Hialurônico</h3>
+                <p>Injeção guiada por ultrassom para articulações desgastadas. Restaura lubrificação e reduce dor.</p>
+            </div>
+            <div class="service-card">
+                <h3>Infiltrações para Dor</h3>
+                <p>Bloqueios anestésicos preciso para alívio rápido. Todos os procedimentos monitorados via ultrassom.</p>
+            </div>
+            <div class="service-card">
+                <h3>Onda de Choque</h3>
+                <p>Tratamento não-invasivo para tendinite, calcificações e dor crônica. Resultados comprovados.</p>
+            </div>
+            <div class="service-card">
+                <h3>Bloqueio de Nervo</h3>
+                <p>Técnica avançada para interromper sinais de dor. Efeito duradouro com segurança comprovada.</p>
+            </div>
+            <div class="service-card">
+                <h3>Rizotomia</h3>
+                <p>Procedimento minimamente invasivo para dor crônica na coluna. Alívio de longa duração.</p>
+            </div>
+            <div class="service-card">
+                <h3>Botox Terapêutico</h3>
+                <p>Tratamento para enxaqueca crônica e dor muscular. Redução significativa de episódios.</p>
+            </div>
         </div>
-
-        <button class="cta-button">Agende sua consulta</button>
-      </div>
-      <div class="hero-visual">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <g opacity="0.2">
-            <circle cx="200" cy="150" r="120" stroke="white" stroke-width="2" fill="none"/>
-          </g>
-          <text x="200" y="160" font-size="80" text-anchor="middle" fill="white" opacity="0.3">🩺</text>
-        </svg>
-      </div>
     </div>
-  </section>
-
-  <section class="services" id="services">
-    <h2>Nossos Serviços</h2>
-    <p class="services-subtitle">Tratamentos especializados com tecnologia de ponta</p>
-
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">💉</div>
-        <h3>Ácido Hialurônico</h3>
-        <p>Infiltrações com ácido hialurônico guiadas por ultrassom para articulações e tecidos moles.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
-        <h3>Onda de Choque</h3>
-        <p>Terapia não invasiva indicada para tendinites, fascite plantar e lesões musculares.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🎯</div>
-        <h3>Bloqueio de Nervo</h3>
-        <p>Procedimentos precisos para alívio da dor crônica com recuperação rápida.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🔬</div>
-        <h3>Rizotomia</h3>
-        <p>Tratamento minimamente invasivo para dor nas costas e cervical.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">💆</div>
-        <h3>Botox para Enxaqueca</h3>
-        <p>Alívio efetivo de enxaquecas crônicas através de injeções estratégicas.</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🏥</div>
-        <h3>Fisioterapia</h3>
-        <p>Reabilitação completa com equipe especializada e equipamentos modernos.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="trust">
-    <div class="trust-content">
-      <h2>Por que nos escolher</h2>
-
-      <div class="trust-grid">
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <h3>Dr. Rafael Rocha</h3>
-            <p>Especialista em Medicina da Dor com residência pelo HC Clínicas</p>
-          </div>
+    
+    <!-- Credenciais -->
+    <div class="credentials">
+        <div class="container">
+            <h2 style="color: #1a5c7a;">Por Que Escolher</h2>
+            <div class="credential-list">
+                <div class="credential-item">
+                    <p><strong>500+ Procedimentos</strong> — Experiência comprovada em centro cirúrgico</p>
+                </div>
+                <div class="credential-item">
+                    <p><strong>Ultrassom Guiado</strong> — Precisão máxima em cada procedimento</p>
+                </div>
+                <div class="credential-item">
+                    <p><strong>Convênio Aceito</strong> — Facilidade de acesso para seus pacientes</p>
+                </div>
+                <div class="credential-item">
+                    <p><strong>Multilocal</strong> — Atendimento em Clínica Santa Isabel, Bem, CITI e Cardiocor</p>
+                </div>
+                <div class="credential-item">
+                    <p><strong>Residência em Dor</strong> — Treinamento avançado pelo HC Clínicas</p>
+                </div>
+                <div class="credential-item">
+                    <p><strong>Atendimento Humanizado</strong> — Escuta ativa, plano personalizado</p>
+                </div>
+            </div>
         </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <h3>Tecnologia de Ponta</h3>
-            <p>Todos os procedimentos guiados por ultrassom para máxima precisão</p>
-          </div>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <h3>Aceita Convênio</h3>
-            <p>Atendimento facilitado com as principais operadoras de saúde</p>
-          </div>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <h3>4 Unidades</h3>
-            <p>Presença em Guará II, Pátio Brasil, Águas Claras e Valparaíso</p>
-          </div>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <h3>Experiência Comprovada</h3>
-            <p>46 anos de história na reabilitação e medicina especializada</p>
-          </div>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <h3>Atendimento Humanizado</h3>
-            <p>Equipe dedicada ao bem-estar e satisfação de cada paciente</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-
-  <section class="about" id="about">
-    <div>
-      <h2>Sobre Dr. Rafael Rocha</h2>
-      <p>Especialista em Medicina da Dor com extensa experiência em procedimentos minimamente invasivos guiados por ultrassom.</p>
-      <p>Formado pela Universidade de Brasília com residência em Anestesiologia pelo Hospital das Clínicas da Faculdade Federal, Dr. Rafael Rocha complementou sua formação com especialização em Medicina da Dor, desenvolvendo expertise única em procedimentos avançados.</p>
-      <p>Com mais de 500 procedimentos em centro cirúrgico, atua nas principais clínicas de Brasília, sempre priorizando a precisão técnica e o conforto do paciente.</p>
+    
+    <!-- Contato -->
+    <div class="section container" id="contato" style="background: white;">
+        <h2>Agende Sua Consulta</h2>
+        <p style="font-size: 1.05rem; color: #666; margin-top: 20px;">
+            Atendimento em Brasília-DF<br>
+            <strong>Clínica Santa Isabel</strong> | Mais locais disponíveis
+        </p>
+        <a href="tel:+556121234567" class="cta-button" style="margin-top: 30px;">Ligar Agora</a>
     </div>
-    <div class="about-image">
-      🩺
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Unidades</h3>
-        <a href="#">Guará II</a>
-        <a href="#">Pátio Brasil</a>
-        <a href="#">Águas Claras</a>
-        <a href="#">Valparaíso</a>
-      </div>
-      <div class="footer-section">
-        <h3>Serviços</h3>
-        <a href="#">Ácido Hialurônico</a>
-        <a href="#">Onda de Choque</a>
-        <a href="#">Bloqueio de Nervo</a>
-        <a href="#">Rizotomia</a>
-      </div>
-      <div class="footer-section">
-        <h3>Contato</h3>
-        <a href="tel:+5561999999999">+55 (61) 99999-9999</a>
-        <a href="mailto:contato@santaisabel.com.br">contato@santaisabel.com.br</a>
-        <a href="#">WhatsApp</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Clínica Santa Isabel. Todos os direitos reservados.</p>
-    </div>
-  </footer>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dr. Rafael Rocha — Medicina da Dor. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
