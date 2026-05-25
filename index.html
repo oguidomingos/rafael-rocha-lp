@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Rafael Rocha - Fisioterapia Clínica Santa Isabel</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e5a96 0%, #2d7bb0 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1e5a96;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #1e5a96;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #1e5a96;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: #1e5a96;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(30, 90, 150, 0.2);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1e5a96;
+            text-align: center;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 4px solid #1e5a96;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        .service-card h3 {
+            color: #1e5a96;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            color: #1e5a96;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-text p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            background: linear-gradient(135deg, #1e5a96 0%, #2d7bb0 100%);
+            height: 400px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: #1e5a96;
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: white;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f3a5f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+            .about-content { grid-template-columns: 1fr; }
+            .section { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">🏥 Clínica Santa Isabel</div>
+            <ul class="nav-links">
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Recuperação Completa com Confiança</h1>
+            <p class="subtitle">
+                Fisioterapia de excelência sob direção do Dr. Rafael Rocha.
+                Recupere sua mobilidade, qualidade de vida e bem-estar.
+            </p>
+            <button class="cta-button">Agende sua Avaliação</button>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicos" class="section">
+        <h2>Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🏃 Reabilitação Motora</h3>
+                <p>Tratamento especializado para recuperação de mobilidade após lesões, cirurgias ou condições crônicas.</p>
+            </div>
+            <div class="service-card">
+                <h3>💪 Fortalecimento Muscular</h3>
+                <p>Programas personalizados para aumentar força, resistência e funcionalidade do corpo.</p>
+            </div>
+            <div class="service-card">
+                <h3>🤸 Fisioterapia Desportiva</h3>
+                <p>Prevenção e tratamento de lesões em atletas e praticantes de atividade física.</p>
+            </div>
+            <div class="service-card">
+                <h3>🧘 Reabilitação Pós-Cirúrgica</h3>
+                <p>Acompanhamento completo na recuperação após procedimentos cirúrgicos ortopédicos.</p>
+            </div>
+            <div class="service-card">
+                <h3>🎯 Terapia Manual</h3>
+                <p>Técnicas avançadas de mobilização e manipulação para alívio de dor.</p>
+            </div>
+            <div class="service-card">
+                <h3>👨‍⚕️ Avaliação Funcional</h3>
+                <p>Diagnóstico completo e planejamento personalizado do tratamento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre" class="section about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Sobre o Dr. Rafael Rocha</h3>
+                <p>
+                    Com mais de 15 anos de experiência em Fisioterapia, o Dr. Rafael Rocha é especialista em 
+                    reabilitação motora e ortopedia.
+                </p>
+                <p>
+                    Formado em Fisioterapia com especialização em Trauma e Ortopedia, o Dr. Rafael dedica-se a oferecer 
+                    tratamento de qualidade baseado em evidências científicas.
+                </p>
+                <p>
+                    Sua abordagem humanizada e técnica científica garantem resultados reais na recuperação de seus pacientes.
+                </p>
+            </div>
+            <div class="about-image">
+                👨‍⚕️<br><strong>Dr. Rafael Rocha</strong><br><small>Fisioterapeuta Especialista</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="section contact-section">
+        <h2>Entre em Contato</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>📞 Telefone</h4>
+                <p>(XX) XXXX-XXXX</p>
+            </div>
+            <div class="contact-item">
+                <h4>📧 Email</h4>
+                <p>contato@clinicasantaisabel.com</p>
+            </div>
+            <div class="contact-item">
+                <h4>📍 Endereço</h4>
+                <p>São Paulo, SP</p>
+            </div>
+        </div>
+        <button class="cta-button">Agende Agora</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Clínica Santa Isabel. Todos os direitos reservados.</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
+            Preview criado para apresentação comercial | Dr. Rafael Rocha
+        </p>
+    </footer>
+</body>
+</html>
